@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+	<meta charset="UTF-8">
+	<title>My bookstore</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0 maximum-scale=2, user-scalable=0">
+	<link rel="stylesheet" href="css/normalize.css">
+	<link rel="stylesheet" href="plug-in/OwlCarousel/assets/owl.carousel.min.css">
+	<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+	<div class="wrapper">
+		<!-- Start header -->
+		<header class="header">
+			<div class="navbar">
+				<div class="nav-container">
+					<h1 class="logo"><a href="#">悠遊書局</a></h1>
+					<ul id="fade-in-menu" class="menu">
+						<li class="menu-item"><a id="loginBtn" href="#!">登入/加入會員</a></li>
+						<li class="menu-item"><a href="#">會員專區</a></li>
+						<li class="menu-item"><a href="#">購物車</a></li>
+						<li class="menu-item"><a href="#contact">聯絡我們</a></li>
+						<a href="#!" class="close-btn">
+							<span></span>
+							<span></span>
+						</a>
+					</ul>
+					<a href="#fade-in-menu" class="menubar">
+						<span></span>
+						<span></span>
+						<span></span>
+					</a>
+					<div id="greeting"></div>
+				</div>
+			</div>
+		</header>
+		<!-- Start login -->
+		<section class="login" id="loginMenu">
+			<div class="login-container">
+				<form class="formLayout" action="">
+					<div class="login-item">
+						<label>請輸入帳號：
+							<input type="email" name="account" placeholder="abcd1234@gmail.com" required id="account">
+						</label>
+					</div>
+					<div class="login-item">
+						<label>請輸入密碼：
+							<input type="password" name="password" placeholder="********" required id="password">
+						</label>
+					</div>
+					<div class="login-item">
+						<input type="button" name="regist" value="註冊" id="regist" class="btn btn-primary">
+						<input type="button" name="check" value="登入" id="check" class="btn btn-secondary">
+						<input type="button" name="cancel" value="取消" id="cancel" class="btn btn-secondary">
+					</div>
+					<p id="registSuccesOrNot"></p>
+				</form>
+			</div>
+		</section>
+		<!-- End login -->
+		<!-- Start login -->
+		<!-- <section class="login">
+			<div class="login-container">
+				<div class="left-col">
+					<div class="img-container">
+						<div class="img"></div>
+					</div>
+				</div>
+				<div class="right-col">
+					<div class="login__type">
+						連結
+						<img src="" alt="" class="icon1">
+						<img src="" alt="" class="icon2">
+						<div class="sing-up-switch"><a href="#!">Sign Up</a></div>
+						<div class="sing-in-switch"><a href="#!">Sing In</a></div>
+					</div>
+					<form action="" class="login__signUp">
+						<label for="account">帳號：
+							<input type="text" name="account">
+						</label>
+						<label for="password1">密碼：
+							<input type="password" name="password1">
+						</label>
+						<label for="password2">再輸入一次：
+							<input type="password" name="password2">
+						</label>
+						<input type="button" value="註冊" class="btn btn-primary">
+						<input type="button" value="取消" class="btn btn-secondary">
+						<p id="registSuccesOrNot"></p>
+					</form>
+					<form action="" class="login__signIn">
+						<label for="account">帳號：
+							<input type="text" name="account">
+						</label>
+						<label for="password1">密碼：
+							<input type="password" name="password1">
+						</label>
+						<label for="password2">請輸入驗證碼：
+							<input type="password" name="password2">
+						</label>
+						<input type="button" value="登入" class="btn btn-primary">
+						<input type="button" value="取消" class="btn btn-secondary">
+						<p id="registSuccesOrNot"></p>
+					</form>
+				</div>
+			</div>
+		</section> -->
+		<!-- End login -->
+		<!-- End header -->
+		<!-- Start main -->
+		<section class="main">
+			<!-- Start jumbotron -->
+			<div class="jumbotron hero-bgc-gray">
+				<div class="container">
+					<div class="image-container">
+						<div class="image" style="background-image: url(images/bgImage/slogan1.jpg);"></div>
+					</div>
+					<div class="about">
+						<div class="js-fadeInUp">
+							<h2 class="title">專屬於你的書</h2>
+							<p class="description">在偌大的書海當中，找尋那一本獨特，適合你閱讀的書</p>
+							<a href="#" class="btn btn-primary">開始找書</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- End jumbotron -->
+			<!-- Start search -->
+			<div class="search hero hero-bgc-white">
+				<div class="container">
+					<div class="section-intro js-fadeInUp">
+						<h2 class="title">搜尋功能</h2>
+						<p class="description">可直接輸入名稱，搜尋您的關鍵字</p>
+					</div>
+					<div class="row">
+						<div class="col-1-2 col-sm-1-1 js-fadeInRight">
+							<div class="image-container">
+								<div class="image" style="background-image: url(images/search.jpg);"></div>
+							</div>
+						</div>
+						<div class="col-1-2 col-sm-1-1">
+							<div class="form-container js-fadeInLeft">
+								<div class="form-row">
+									<div class="search-item">
+										<label for="search-option">查詢分類：</label>
+										<select name="classification" id="search-option">
+											<option value="book">書名</option>
+											<option value="author">作者</option>
+											<option value="publishing house">出版社</option>
+										</select>
+									</div>
+								</div>
+								<div class="form-row">
+									<div class="search-item">
+										<label for="bookname">請輸入名稱：</label>
+										<input type="text" id="bookname" checked="checked">
+									</div>
+								</div>
+								<div class="form-row">
+									<div class="search-item">
+										<input type="button" class="btn btn-primary" value="搜尋">
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- End search -->
+			<!-- Start ranking -->
+			<div class="ranking hero hero-bgc-gray">
+				<div class="container">
+					<div class="section-intro js-fadeInUp">
+						<h2 class="title2">銷售排行榜</h2>
+						<p class="description2">各分類書籍近期銷售排行榜</p>
+					</div>
+					<div class="row">
+						<div class="col-1-3">
+							<div class="ranking-item js-fadeInOrder">
+								<div class="image-container">
+									<div id="finance" class="image" style="background-image: url(images/books/finance/finance1.png);"></div>
+								</div>
+								<div class="preview">
+									<h3 class="title">財經/商業</h3>
+									<p class="description">
+										<span class="changeBookImage" name="finance1">1.斜槓青年：全球職涯新趨勢，迎接更有價值的多職人生</span>
+										<span class="changeBookImage" name="finance2">2.好人主管的狡猾管理學：我自己來做還比較快？難怪你老是替部屬收爛攤，當主管該有的心理素質，要從狡猾開始。</span>
+										<span class="changeBookImage" name="finance3">3.散戶的50道難題</span>
+										<span class="changeBookImage" name="finance4">4.最高休息法：腦科學x正念，全世界的菁英們都是這樣讓大腦休息</span>
+										<span class="changeBookImage" name="finance5">5.有錢人的習慣和你不一樣：10個生活習慣，註定你是低薪族，或者變有錢(暢銷修訂版)</span>
+									</p>
+								</div>
+							</div>
+						</div>
+						<div class="col-1-3">
+							<div class="ranking-item js-fadeInOrder">
+								<div class="image-container">
+									<div id="design" class="image" style="background-image: url(images/books/design/design1.png);"></div>
+								</div>
+								<div class="preview">
+									<h3 class="title">藝術/設計</h3>
+									<p class="description">
+										<span class="changeBookImage" name="design1">1.不懂神話，就只能看裸體了啊：認識藝術的快速鍵，逛美術館不再若有所思、腦袋空空</span>
+										<span class="changeBookImage" name="design2">2.繪畫的基本：一枝筆就能畫，零基礎也能輕鬆上手的6堂畫畫課</span>
+										<span class="changeBookImage" name="design3">3.日本色彩物語：反映自然四季、歲時景色與時代風情的大和絕美傳統色160選</span>
+										<span class="changeBookImage" name="design4">4.我在故宮修文物</span>
+										<span class="changeBookImage" name="design5">5.版面設計學：平面設計的美感養成</span>
+									</p>
+								</div>
+							</div>
+						</div>
+						<div class="col-1-3">
+							<div class="ranking-item js-fadeInOrder">
+								<div class="image-container">
+									<div id="literature" class="image" style="background-image: url(images/books/literature/literature1.png);"></div>
+								</div>
+								<div class="preview">
+									<h3 class="title">文學創作</h3>
+									<p class="description">
+										<span class="changeBookImage" name="literature1">1.致我們單純的小美好(完美典藏版)</span>
+										<span class="changeBookImage" name="literature2"">2.因為尋找，所以看見，一個人的朝聖之路</span>
+										<span class="changeBookImage" name="literature3"">3.刺殺騎士團長(2冊合售)日本文學</span>
+										<span class="changeBookImage" name="literature4"">4.解憂雜貨店(電影書腰版)</span>
+										<span class="changeBookImage" name="literature5">5.崩壞國文：長安水邊多魯蛇？唐代文學與它們的作者</span>
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-1-3">
+							<div class="ranking-item js-fadeInOrder">
+								<div class="image-container">
+									<div id="psychology" class="image" style="background-image: url(images/books/psychology/psychology1.png);"></div>
+								</div>
+								<div class="preview">
+									<h3 class="title">心靈勵志</h3>
+									<p class="description">
+										<span class="changeBookImage" name="psychology1">1.你的善良必須有點鋒芒：36則讓你有態度、不委曲，深諳世故卻不世故的世道智慧</span>
+										<span class="changeBookImage" name="psychology2">2.別讓現在的壞事，趕走未來的好事</span>
+										<span class="changeBookImage" name="psychology3">3.可以善良，但你要有底線不當好人：人際關係斷．捨．離，勉強自己和別人好，不如找人真心對你好</span>
+										<span class="changeBookImage" name="psychology4">4.茶堂</span>
+										<span class="changeBookImage" name="psychology5">5.情緒行為操控心理學：史上最完整！250項人際情感心理技巧</span>
+									</p>
+								</div>
+							</div>
+						</div>
+						<div class="col-1-3">
+							<div class="ranking-item js-fadeInOrder">
+								<div class="image-container">
+									<div id="science" class="image" style="background-image: url(images/books/science/science1.png);"></div>
+								</div>
+								<div class="preview">
+									<h3 class="title">科學/資訊</h3>
+									<p class="description">
+										<span class="changeBookImage" name="science1">1.世界冠軍紙飛機：打破世界紀錄的紙飛機設計、飛行原理及調校技巧</span>
+										<span class="changeBookImage" name="science2">2.課堂上沒教的科學知識：60則令人拍案叫絕的故事</span>
+										<span class="changeBookImage" name="science3">3.最後一個知識人：末日之後，擁有重建文明社會的器物、技術與知識原理</span>
+										<span class="changeBookImage" name="science4">4.演算法圖鑑：26種演算法+7種資料結構，人工智慧、數據分析、邏輯思考的原理和應用全圖解</span>
+										<span class="changeBookImage" name="science5">5.Deep Learning|用Python進行深度學習的基礎理論實作</span>
+									</p>
+								</div>
+							</div>
+						</div>
+						<div class="col-1-3">
+							<div class="ranking-item js-fadeInOrder">
+								<div class="image-container">
+									<div id="liveForLife" class="image" style="background-image: url(images/books/liveForLife/liveForLife1.png);"></div>
+								</div>
+								<div class="preview">
+									<h3 class="title">生活</h3>
+									<p class="description">
+										<span class="changeBookImage" name="liveForLife1">1.吃一口薑黃，打開身體自癒力：天然的最佳抗生素，一天吃三次，韓國名醫已連吃八年，效果有如不必動的有氧</span>
+										<span class="changeBookImage" name="liveForLife2">2.低醣．生酮常備菜：80道吃進優質肉類．海鮮．酪梨．好油脂，家常口味的生酮常備食譜</span>
+										<span class="changeBookImage" name="liveForLife3">3.日本人妻．無限料理：用1倍氣力變身3倍創意贏得10倍滿意</span>
+										<span class="changeBookImage" name="liveForLife4">4.飯人食堂：挑好米、一鍋燒，中西日韓好食感飯料理</span>
+										<span class="changeBookImage" name="liveForLife5">5.姊妹揪團瘋釜山：地鐵暢遊x道地美食x購物攻略x打卡聖地，延伸暢遊新興旅遊勝地大邱</span>
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- End ranking -->
+			<!-- Start choose -->
+			<div class="choose hero hero-bgc-white">
+				<div class="container">
+					<div class="section-intro js-fadeInUp">
+						<h2 class="title">書店選書</h2>
+						<p class="description">由書店挑選各類好書，提供您多方面的現代化知識</p>
+					</div>
+					<div class="js-fadeInUp">
+						<div class="owl-carousel owl-theme">
+							<!-- 排版用inline-block，要注意換行4px -->
+							<div class="choose-item">
+								<div class="image-container">
+									<div class="image" style="background-image: url(images/books/choose/1.png);"></div>
+								</div>
+								<div class="preview">
+									<h4 class="title">野台戲</h4>
+									<p class="description">我會拍「野台戲」專題，可能是在尋找一種快消失殆盡的台灣情調，一種源自童年記憶的美麗印象，然而什麼又是古早的台灣情調，那可能是一種疼惜甘苦人的敦厚人情，一種胼手胝足、同心合力為生計獻身和為下一代孕育契機的無私付出。<br>－－范毅舜</p>
+								</div>
+							</div>
+							<div class="choose-item">
+								<div class="image-container">
+									<div class="image" style="background-image: url(images/books/choose/2.png);"></div>
+								</div>
+								<div class="preview">
+									<h4 class="title">對決病毒最前線：從流感、炭疽病、SARS到伊波拉，資深防疫專家對抗致命傳染病的全球大冒險</h4>
+									<p class="description">肉眼看不見的微小生物，才是對人類性命的最大威脅<br>從流感、漢他病毒、伊波拉病毒、炭疽病恐怖攻擊到SARS，從非洲、南美、波斯灣、亞洲到美國，為阻止流行病大爆發，25年資深防疫專家與最狡滑無情敵人的精采交手，同時揭開讓時疫雪上加霜的驚恐和貪腐真相</p>
+								</div>
+							</div>
+							<div class="choose-item">
+								<div class="image-container">
+									<div class="image" style="background-image: url(images/books/choose/3.png);"></div>
+								</div>
+								<div class="preview">
+									<h4 class="title">昆蟲誌：人類學家觀看蟲蟲的26種方式(誠品限量版)</h4>
+									<p class="description">「高空中，無數的昆蟲正看著我們！」<br>一開始，作者切入美國農業部雇用的飛機。飛機帶領我們升空，一探一千～四千公尺高空中所捕捉到的數以萬計的昆蟲。無垠天空裡的昆蟲在氣流中漂浮，等到時機成熟，擺個頭，扭個身，順氣流而下，降落。昆蟲的外貌與人類大相逕庭，當人們對昆蟲報以噁心表情時，有沒有想過昆蟲比人類早了幾億年生存於這地球上？昆蟲不像貓、狗惹人憐愛，也不像獅、虎擁有神話的加持，但是自古以來，昆蟲與人其實相依相存，而且能夠相互映照出彼此的狀態。雜揉文學紀錄、藝術描繪、歷史文獻和科學報告，不時加入田野採訪，作者縱橫古今、遊走東西方，描繪出人類與昆蟲最親真切的交流時刻。</p>
+								</div>
+							</div>
+							<div class="choose-item">
+								<div class="image-container">
+									<div class="image" style="background-image: url(images/books/choose/4.png);"></div>
+								</div>
+								<div class="preview">
+									<h4 class="title">未來年表：人口減少的衝擊，高齡化的寧靜危機</h4>
+									<p class="description">「少子化」「高齡化」也許已經讓你聽到耳朵長繭，但你可能不曾想過：它們將如何左右我們的未來？<br>少子化、高齡化所帶來的社會與經濟問題，絕對超乎你我想像！不要天真樂觀地以為，人變少了，生活就會比較舒適。看看日本經驗，你將獲得終身受用的啟發與提醒！</p>
+								</div>
+							</div>
+							<div class="choose-item">
+								<div class="image-container">
+									<div class="image" style="background-image: url(images/books/choose/5.png);"></div>
+								</div>
+								<div class="preview">
+									<h4 class="title">我們的島：臺灣三十年環境變遷全紀錄</h4>
+									<p class="description">臺灣首部長期記錄環境變遷的巨構，1980~2017追蹤超過三十五年的紀實報導。縮時總覽今昔土地、山川、河流、海洋變遷的樣貌，史詩般撼動人心的紙上紀錄片。<br>以環境史時間軸的比對方式，觀看土地利用型態對環境、生物與人的影響；並透過海陸交界、生物與人的關係、離島樣態、山林聲息、災難啟示等，清楚揭露島嶼長時間變遷歷程。</p>
+								</div>
+							</div>
+							<div class="choose-item">
+								<div class="image-container">
+									<div class="image" style="background-image: url(images/books/choose/6.png);"></div>
+								</div>
+								<div class="preview">
+									<h4 class="title">同情者(誠品獨家首刷限量作者燙金簽名版)</h4>
+									<p class="description">大時代下的小人物如何面臨內心交戰、國家民族與身分認同的撕裂拉扯，震撼人心近 25 萬字篇幅的深刻書寫，從戰火中看見人性、自荒謬裡得到救贖<br>我是一名間諜，一名沉睡者，一介幽靈，一名雙面人。<br>1975年4月，西貢陷入動亂。在某處別墅裡，一名將軍喝著威士忌，在他信任的軍官幫助下列出一份名單，決定誰能搭上離開這個國家的最後一班飛機。將軍和他的同胞在洛杉磯展開新生活，卻渾然不知在他們之中，那位軍官正暗中觀察著他們，並將一切報告給越共。</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- End choose -->
+			<!-- Start others -->
+			<div class="others hero hero-bgc-gray">
+				<div class="container">
+					<div class="section-intro js-fadeInUp">
+						<h2 class="title2">其他商品</h2>
+						<p class="description2">我們還有其餘商品可以選購</p>
+					</div>
+					<div class="row">
+						<div class="col-1-3">
+							<div class="other-item js-fadeInOrder">
+								<div class="preview">
+									<h3 class="title">風格文具</h3>
+								</div>
+								<div class="image-container">
+									<div class="image" style="background-image: url(images/others/1.png);"></div>
+								</div>
+							</div>
+						</div>
+						<div class="col-1-3">
+							<div class="other-item js-fadeInOrder">
+								<div class="preview">
+									<h3 class="title">生活雜貨</h3>
+								</div>
+								<div class="image-container">
+									<div class="image" style="background-image: url(images/others/2.png);"></div>
+								</div>
+							</div>
+						</div>
+						<div class="col-1-3">
+							<div class="other-item js-fadeInOrder">
+								<div class="preview">
+									<h3 class="title">精選雜誌</h3>
+								</div>
+								<div class="image-container">
+									<div class="image" style="background-image: url(images/others/3.png);"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- End others -->
+			<!-- Start browse -->
+			<div class="browse hero hero-bgc-white">
+				<div class="container">
+					<div class="image-container">
+						<div class="image" style="background-image: url(images/bgImage/slogan2.jpg);"></div>
+					</div>
+					<div class="about">
+						<div class="js-fadeInUp">
+							<h2 class="title">歡迎光臨</h2>
+							<p class="description">如果還找不到想要的書，不彷來書局逛逛，體會一下找書的樂趣吧～</p>
+							<a href="#" class="btn btn-primary">進去書店</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- End browse -->
+		</section>
+		<!-- End main -->
+		<!-- Start footer -->
+		<footer class="footer">
+			<div class="contact hero hero-bgc-gray">
+				<div class="container">
+					<div id="contact" class="section-intro js-fadeInUp">
+						<h2 class="title2">聯絡我們</h2>
+						<p class="description2">歡迎蒞臨本店，也可直接一通電話，替您找到最適合您的書</p>
+					</div>
+					<div class="row">
+						<div class="col-1-2 col-sm-1-1">
+							<div class="info-container js-fadeInRight">
+								<div class="contact-preview">
+									<h4 class="title">新北板橋店</h4>
+									<p class="description">220新北市板橋區縣民大道三段板橋車站</p>
+								</div>
+								<div class="contact-preview">
+									<h4 class="title">書店電話</h4>
+									<p class="description">02-1234-5678</p>
+								</div>
+								<div class="contact-preview">
+									<h4 class="title">營業時間</h4>
+									<p class="description">10:00a.m.～22:00p.m.</p>
+								</div>
+							</div>
+						</div>
+						<div class="col-1-2 col-sm-1-1">
+							<div id="map-container" class="js-fadeInLeft">
+								<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5113.197928082818!2d121.46025478188544!3d25.014487930660376!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442a8195573088b%3A0x6aa9bd949c27f860!2z5p2_5qmL6LuK56uZ!5e0!3m2!1szh-TW!2stw!4v1515745730664" width="100%" height="100%" frameborder="0" style="border:0" allowfullscreen></iframe>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</footer>
+		<!-- End footer -->
+	</div>
+
+	<!-- Start js -->
+	<script src="plug-in/jquery-3.2.1.min.js"></script>
+	<script src="plug-in/OwlCarousel/owl.carousel.min.js"></script>
+	<script src="plug-in/scrollreveal-master/scrollreveal.min.js"></script>
+	<script src="js/init.js"></script>
+</body>
+</html>

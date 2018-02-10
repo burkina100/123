@@ -834,21 +834,18 @@ select, input, label {
     utilities
 \***************/
 /*display*/
-.u-display-ib {
-	display: inline-block !important;
-}
-.u-display-n {
-	display: none !important;
-}
+.u-display-ib {display: inline-block !important;}
+.u-display-n {display: none !important;}
+.u-display-b {display: block !important;}
 
 /*margin*/
-.u-mb-32 {margin-bottom: 32px;}
-.u-mr-8 {margin-right: 8px;}
-.u-mr-16 {margin-right: 16px;}
-.u-ml-8 {margin-left: 8px;}
+.u-mb-32 {margin-bottom: 32px !important;}
+.u-mr-8 {margin-right: 8px !important;}
+.u-mr-16 {margin-right: 16px !important;}
+.u-ml-8 {margin-left: 8px !important;}
 
 /*padding*/
-.u-p-0-16 {padding: 0 16px;}
+.u-p-0-16 {padding: 0 16px !important;}
 
 /*float*/
-.u-fr {float: right;}
+.u-fr {float: right !important;}

@@ -73,84 +73,122 @@ $(document).ready(function() {
 	];
 	localStorage.setItem("user", JSON.stringify(user));
 
-	// 增加使用者
-	function addUser(userAccount, userPassword) {
-		var checkIfRepeat = checkUser(1, userAccount);
-		// 值未回傳就執行
-		console.log(checkIfRepeat);
-		if((checkIfRepeat < 0) || (checkIfRepeat === undefined)) {
-			return -1;
+	//登入畫面
+	var loginMenu = $("#loginMenu");
+	$("#loginBtn").click(function() {
+		// loginMenu.css("display", "block");
+		loginMenu.css("visibility", "visible");
+		loginMenu.css("opacity", "1");
+	});
+
+	loginMenu.click(alreadyLogIn);
+	$(".login-container").click(function(e) {
+		e.stopPropagation();
+	});
+
+	// login-type監聽器
+	$("#login-type").click(function(e) {
+		var targetText = e.target.textContent;
+		if(targetText === "註冊") {
+			changeToLogup();
+		} else if(targetText === "登入") {
+			changeToLogin();
 		}
-		var temp = {
-			account: userAccount,
-			password: userPassword
-		};
-		user.push(temp);
-		localStorage.setItem("user", JSON.stringify(user));
-		return 0;
+		
+	});
+
+	// 切換為註冊
+	function changeToLogup() {
+		$("#changeLoginType").attr("class", "u-mb-32");
+		var logupBtn = document.getElementById("registOrCheck");
+		logupBtn.value = "註冊";
 	}
 
-	// 檢查使用者
-	function checkUser(addOrcheck, userAccount, userPassword) {
-		var temp = JSON.parse(localStorage.getItem("user"));
-		for(var i = 0; i < temp.length; i ++) {
-			if(addOrcheck === 0) {
-				// 確認使用者資料已存在
-				if(temp[i].account === userAccount){
-					if(temp[i].account === userPassword) {
-						return 0;
-					}
-				}
-			}else if (addOrcheck === 1) {
-				// 檢查註冊使用者是否重複
-				if(temp[i].account === userAccount) {
-					return -1;
-				}
-				return 0;
-			}
-			return -1;
-		}
+	// 切換為登入
+	function changeToLogin() {
+		$("#changeLoginType").attr("class", "u-mb-32 u-display-n");
+		var loginBtn = document.getElementById("registOrCheck");
+		loginBtn.value = "登入";
 	}
 
-	// 設定註冊／登入完成文字
-	function setIfSuccess(num) {
+	// login監聽器
+	$("#registOrCheck").click(function() {
+		var success ;
+		if(this.value === "註冊") {
+			success = checkUser(1, $("#account")[0].value, $("#password")[0].value, $("#password2")[0].value);
+		} else if(this.value === "登入") {
+			success = checkUser(0, $("#account")[0].value, $("#password")[0].value, $("#password2")[0].value);
+		}
+		switch(success) {
+			case "registSuccess":
+				hint("恭喜您，註冊成功。", "green");
+				break;
+			case "registRepeat":
+				hint("帳號重複，請重新註冊。", "red");
+				break;
+			case "registFail":
+				hint("第二次密碼輸入不同，請重新輸入。", "red");
+				break;
+			case "loginSuccess":
+				hint("登入成功。", "green");
+				break;
+			case "loginFail":
+				hint("帳號或密碼有誤。", "red");
+				break;
+		}
+		
+	});
 
+	$("#cancel").click(alreadyLogIn);
+
+	// 註冊或登入提示訊息
+	function hint(hintText, hintColor) {
+		$("#registHint").text(hintText);
+		$("#registHint").css("color", hintColor);
 	}
 
 	// 已登入或註冊
 	function alreadyLogIn() {
 		$("#account")[0].value = "";
 		$("#password")[0].value = "";
-		loginMenu.css("display", "none");
+		loginMenu.css("visibility", "hidden");
+		loginMenu.css("opacity", "0");
 	}
 
-	//登入畫面
-	var loginMenu = $("#loginMenu");
-	$("#loginBtn").click(function() {
-		loginMenu.css("display", "block");
-	})
+	// 增加使用者
+	function addUser(userAccount, userPassword, checkPassword) {
+		var temp = {
+			account: userAccount,
+			password: userPassword
+		};
+		user.push(temp);
+		localStorage.setItem("user", JSON.stringify(user));
+	}
 
-	$("#regist").click(function() {
-		var success = addUser($("#account")[0].value, $("#password")[0].value);
-		if(success === 0) {
-			$("#registSuccesOrNot").text("恭喜您，註冊成功。");
-			$("#registSuccesOrNot").css("color", "green");
-		}else {
-			$("#registSuccesOrNot").text("帳號重複，請重新註冊。");
-			$("#registSuccesOrNot").css("color", "red");
+	// 檢查使用者
+	function checkUser(addOrcheck, userAccount, userPassword, checkPassword) {
+		var temp = JSON.parse(localStorage.getItem("user"));
+		for(var i = 0; i < temp.length; i ++) {
+			if(addOrcheck === 0) {
+				// 確認使用者資料已存在
+				if(temp[i].account === userAccount){
+					if(temp[i].password === userPassword) {
+						return "loginSuccess";
+					}
+				}
+			}else if (addOrcheck === 1) {
+				// 檢查註冊使用者是否重複
+				if(temp[i].account === userAccount) {
+					return "registRepeat";
+				}
+				if(userPassword === checkPassword) {
+					addUser(userAccount, userPassword);
+					return "registSuccess";
+				} else {
+					return "registFail";
+				}
+			}
 		}
-	})
-
-	$("#check").click(function() {
-		var success = checkUser(0, $("#account")[0].value, $("#password")[0].value);
-		if(success === 0) {
-			$("#registSuccesOrNot").text("登入成功。");
-			$("#registSuccesOrNot").css("color", "green");
-		}else {
-			$("#registSuccesOrNot").text("帳號或密碼有誤。");
-			$("#registSuccesOrNot").css("color", "red");
-		}
-	})
-
-	$("#cancel").click(alreadyLogIn);
+		return "loginFail";
+	}
 });

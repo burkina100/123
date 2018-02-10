@@ -281,7 +281,7 @@ select, input, label {
 	width: 128px;
 	height: 64px;
 	margin-left: 16px;
-	background-image: url(../images/logo/logo.png);
+	background-image: url(../images/logo/mylogo.png);
 	background-size: contain;
 	background-repeat: no-repeat;
 	background-position: center;
@@ -495,7 +495,7 @@ select, input, label {
 .ranking .image-container .image {
 	background-size: contain;
 	background-color: #fefefe;
-	transition: all 0.3s;
+	/*transition: all 0.3s;*/
 }
 
 .ranking .description span {
@@ -739,9 +739,28 @@ select, input, label {
 	z-index: 5;
 
 	background-color: rgba(0, 0, 0, 0.8);
-	display: none;
+	/*display: none;*/
+	visibility: hidden;
+	opacity: 0;
+
+	transition: all 0.5s;
+}
+
+.login__type::after {
+	content: "";
+	display: block;
+	clear: both;
+}
+
+.sign-up-btn, .sign-in-btn {
+	padding: 4px 8px;
+	border-radius: 12px;
 
 	transition: all 0.3s;
+}
+
+.sign-up-btn:target, .sign-in-btn:target {
+	background-color: #d3cbc2;
 }
 
 .login-container {
@@ -749,54 +768,87 @@ select, input, label {
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
-	width: 500px;
-	height: 400px;
+	width: 800px;
+	height: 600px;
 
-	padding: 20px;
+	padding: 40px;
+
+	background-color: #fefefe;
+	border-radius: 16px;
 }
 
-.login-container::before {
+.img-container {
+	width: 100%;
+	display: block;
+}
+
+.img-container::before {
 	content: "";
 	display: block;
+	width: 100%;
+	padding-top: 520px;
+}
+
+.img-container .img {
+	background-position: center;
+	background-size: cover;
+	background-repeat: no-repeat;
+
 	position: absolute;
 	top: 0;
 	left: 0;
 	width: 100%;
 	height: 100%;
-	background-color: #fefefe;
-	border-radius: 16px;
 }
 
-.formLayout {
-	display: flex;
-	flex-direction: column;
-	height: 100%;
-	justify-content: space-around;
-}
-
-.login-item {
-	flex: 3;
+.login__type {
+	display: inline-block;
 	width: 100%;
-	font-size: 20px;
+	border-bottom: 2px solid #937a5e;
 }
 
-.login-item:last-child {
-	flex: 2;
-	display: flex;
-	justify-content: space-between;
+.icon-container {
+	display: inline-block;
+	color: #fefefe;
+	width: 24px;
+	height: 24px;
+	border-radius: 50%;
+	background-color: #3b5998;
 }
 
-.login-item label {
-	color: #333;
-	font-weight: 700;
-}
-
-.login-item:last-child .btn {
-	width: 25%;
-	height: 44px;
-}
-
-#registSuccesOrNot {
+.icon-facebook {
+	display: block;
 	position: absolute;
-	bottom: 0;
+	top: 50%;
+	left: 70%;
+	transform: translate(-50%, -50%);
+	cursor: pointer;
 }
+
+.sign-up-switch, .sign-in-switch {
+	display: inline-block;
+}
+
+
+/***************\
+    utilities
+\***************/
+/*display*/
+.u-display-ib {
+	display: inline-block !important;
+}
+.u-display-n {
+	display: none !important;
+}
+
+/*margin*/
+.u-mb-32 {margin-bottom: 32px;}
+.u-mr-8 {margin-right: 8px;}
+.u-mr-16 {margin-right: 16px;}
+.u-ml-8 {margin-left: 8px;}
+
+/*padding*/
+.u-p-0-16 {padding: 0 16px;}
+
+/*float*/
+.u-fr {float: right;}

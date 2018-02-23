@@ -1,9 +1,0 @@
-﻿header 17
-call 4
-content 4
-portfolio 3
-slider 8
-grid 9
-call 9
-contacts 2
-footer 9 / footer 7

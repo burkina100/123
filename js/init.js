@@ -1,4 +1,4 @@
-$(document).ready(function() {
+;$(document).ready(function() {
 	//加入問候語
 (function () {
 	var greet = $("#greeting");
@@ -67,7 +67,7 @@ $(document).ready(function() {
 	//預設帳號
 	var user =[
 		{
-			account: "abc",
+			account: "abc@gmail.com",
 			password: "123"
 		}
 	];
@@ -77,6 +77,7 @@ $(document).ready(function() {
 	var loginMenu = $("#loginMenu");
 	$("#loginBtn").click(function() {
 		// loginMenu.css("display", "block");
+		changeToLogup();
 		loginMenu.css("visibility", "visible");
 		loginMenu.css("opacity", "1");
 	});
@@ -122,6 +123,7 @@ $(document).ready(function() {
 		switch(success) {
 			case "registSuccess":
 				hint("恭喜您，註冊成功。", "green");
+				alreadyLogIn();
 				break;
 			case "registRepeat":
 				hint("帳號重複，請重新註冊。", "red");
@@ -131,9 +133,13 @@ $(document).ready(function() {
 				break;
 			case "loginSuccess":
 				hint("登入成功。", "green");
+				alreadyLogIn();
 				break;
 			case "loginFail":
 				hint("帳號或密碼有誤。", "red");
+				break;
+			case "acountFailed":
+				hint("帳號不符合email格式", "red");
 				break;
 		}
 		
@@ -144,13 +150,17 @@ $(document).ready(function() {
 	// 註冊或登入提示訊息
 	function hint(hintText, hintColor) {
 		$("#registHint").text(hintText);
-		$("#registHint").css("color", hintColor);
+		if(hintColor){
+			$("#registHint").css("color", hintColor);
+		}
 	}
 
 	// 已登入或註冊
 	function alreadyLogIn() {
 		$("#account")[0].value = "";
 		$("#password")[0].value = "";
+		$("#password2")[0].value = "";
+		hint("");
 		loginMenu.css("visibility", "hidden");
 		loginMenu.css("opacity", "0");
 	}
@@ -168,6 +178,24 @@ $(document).ready(function() {
 	// 檢查使用者
 	function checkUser(addOrcheck, userAccount, userPassword, checkPassword) {
 		var temp = JSON.parse(localStorage.getItem("user"));
+		// 驗證mail的正規表達式
+		// RegExp必須包在//裡面
+		// ^比對字串的開頭，$比對字串的結尾
+		// \w表示英數，等同[A-Za-z0-9]
+		// \. 表示.，\為跳脫字元
+		// \- 表示-，\為跳脫字元
+		// | 代表or
+		// +表示出現1次以上
+		// *表示出現0次以上
+		// [A-Z]表示大小A到Z
+		// [A-Za-z0-9]表示大小寫英文及數字的組合
+		var reg = new RegExp(/^\w+((\-\w+)|(\.\w+))*\@\w+((\.|\-)\w+)*\.[A-Za-z]+$/);
+		// 驗證@前可以用英數字搭配.或-，但-跟.不會連續，也不會跟在@前後
+		// 只會出現一個@，@後面則是以英數及-一次以上的搭配
+		// 最後一定會是.跟大小寫數字的搭配，如.com .tw .jp .uk等等
+		if(!userAccount.match(reg)) {
+			return "acountFailed";
+		}
 		for(var i = 0; i < temp.length; i ++) {
 			if(addOrcheck === 0) {
 				// 確認使用者資料已存在

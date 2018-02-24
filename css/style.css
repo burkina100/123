@@ -657,10 +657,20 @@ select, input, label {
 /* others */
 .others .image {
 	background-size: cover;
+	cursor: pointer;
 }
 
 .others .image:last-child {
 	background-position: top;
+}
+
+.others .othersWeb {
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
 }
 
 /* browse */
